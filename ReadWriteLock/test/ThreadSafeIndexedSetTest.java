@@ -158,6 +158,7 @@ public class ThreadSafeIndexedSetTest {
 		ArrayList<Thread> workers = new ArrayList<>();
 
 		workers.add(new AddWorker(actual, 0, num));
+		workers.get(0).setPriority(Thread.MAX_PRIORITY);
 
 		for (int i = 0; i < last; i++) {
 			workers.add(new GetWorker(actual, chunk));
