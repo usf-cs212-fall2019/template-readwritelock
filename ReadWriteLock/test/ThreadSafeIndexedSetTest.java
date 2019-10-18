@@ -319,8 +319,11 @@ public class ThreadSafeIndexedSetTest {
 		public void run() {
 			for (int i = 0; i < loops; i++) {
 				int index = actual.size() - 1; // warning: size could be changing!
-				Integer last = actual.get(index);
-				result = result.compareTo(last) > 0 ? result : last;
+
+				if (index > 0) {
+					Integer last = actual.get(index);
+					result = result.compareTo(last) > 0 ? result : last;
+				}
 			}
 		}
 	}
